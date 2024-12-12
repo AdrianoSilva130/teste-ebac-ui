@@ -11,7 +11,7 @@ describe('Funcionalidade: Login', () =>{
         cy.screenshot()
     });
 
-    it('Deve fazzer login com sucesso', () => {
+    it('Deve fazer login com sucesso', () => {
         cy.get('#username').type('adriano.teste@teste.com.br')
         cy.get('#password').type('teste@123')
         cy.get('.woocommerce-form > .button').click()
@@ -52,5 +52,12 @@ describe('Funcionalidade: Login', () =>{
         })
 
     });
+
+    it.only('Deve fazer login com sucesso - Usando comandos customizados', () => {
+        cy.login('adriano.teste@teste.com.br' , 'teste@123')
+        cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain' , 'Olá, adriano.teste (não é adriano.teste? Sair)')
+    
+    });
+
  
 })
