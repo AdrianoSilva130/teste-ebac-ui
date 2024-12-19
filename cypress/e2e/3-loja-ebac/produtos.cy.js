@@ -1,5 +1,4 @@
 ///<reference types="cypress"/>
-
 import produtosPage from "../../support/page-objects/produtos.page";
 
 describe('Funcionalidade: Produtos', () => {
@@ -9,22 +8,15 @@ describe('Funcionalidade: Produtos', () => {
     });
     
     it('Deve selecionar um produto da lista', () => {
-        cy.get('.products > .row')
-        //.first()
-        //.last()
-        //.eq(2)
-        .contains('Frankie Sweatshirt')
-        .click()
-        cy.get('#tab-title-description > a').should('contain', 'Descrição')
-
-
-
-    });
-
-    it('Deve buscar um produto com sucesso', () => {
         produtosPage.buscarProdutoLista('Ajax Full-Zip Sweatshirt')
         cy.get('#tab-title-description > a').should('contain', 'Descrição')
+    });
 
+    it.only('Deve buscar um produto com sucesso', () => {
+        let produto = 'Zeppelin Yoga Pant'
+        produtosPage.buscarProduto(produto)
+        cy.get('.product_title').should('contain', produto)
+        
     });
 
     it('Deve visitar a página do produto', () => {
