@@ -1,10 +1,7 @@
-  pipeline {
-    agent any
-
-    stages {
+  stages {
         stage('Setup') {
             steps {
-                git branch: 'main', url: 'https://github.com/AdrianoSilva130/teste-ebac-ui.git'
+                git branch: 'main', url: 'https://github.com/AdrianoSilva130/exercicio-teste-api-ebac.git'
                 bat 'npm install'
             }
         }
